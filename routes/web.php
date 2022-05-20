@@ -1,6 +1,10 @@
 <?php
+
+use App\Http\Controllers\AdminPanel\HomeController as AdminPanelHomeController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +37,7 @@ Route::get('/test/{id}/{name}', [HomeController::class, 'test'])->whereNumber('i
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+//*********************ADMİNPANEL*****************
+Route::get('/admin',[AdminPanelHomeController::class,'index'])->name('admin');
 
