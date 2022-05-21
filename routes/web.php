@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminPanel\HomeController as AdminPanelHomeController;
+use App\Http\Controllers\AdminPanel\MenuController as AdminMenuController;
 use App\Http\Controllers\AdminPanel\MenuController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Routing\Route as RoutingRoute;
@@ -43,6 +44,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/admin',[AdminPanelHomeController::class,'index'])->name('admin');
 
 //*****************ADMİN MENU ROUTES */
-Route::get('/admin/menu',[MenuController::class,'index'])->name('admin_category');
-Route::get('/admin/menu/create',[MenuController::class,'create'])->name('admin_category_create');
-Route::post('/admin/menu/store',[MenuController::class,'store'])->name('admin_category_store');
+Route::get('/admin/menu',[AdminMenuController::class,'index'])->name('admin_menu');
+Route::get('/admin/menu/create',[AdminMenuController::class,'create'])->name('admin_menu_create');
+Route::post('/admin/menu/store',[AdminMenuController::class,'store'])->name('admin_menu_store');
+Route::get('/admin/menu/edit/{id}',[AdminMenuController::class,'edit'])->name('admin_menu_edit');
+Route::post('/admin/menu/update/{id}',[AdminMenuController::class,'update'])->name('admin_menu_update');
