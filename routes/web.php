@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminPanel\HomeController as AdminPanelHomeController;
+use App\Http\Controllers\AdminPanel\MenuController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
@@ -41,3 +42,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //*********************ADMİNPANEL*****************
 Route::get('/admin',[AdminPanelHomeController::class,'index'])->name('admin');
 
+//*****************ADMİN MENU ROUTES */
+Route::get('/admin/menu',[MenuController::class,'index'])->name('admin_category');
+Route::get('/admin/menu/create',[MenuController::class,'create'])->name('admin_category_create');
+Route::post('/admin/menu/store',[MenuController::class,'store'])->name('admin_category_store');
