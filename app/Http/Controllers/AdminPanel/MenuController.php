@@ -16,7 +16,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return view('admin.menu.index');
+        $data= Menu::all();
+        return view('admin.menu.index',['data'=>$data]);
     }
 
     /**
@@ -45,6 +46,7 @@ class MenuController extends Controller
         $data->description = $request->description;
         $data->status = $request->status;
         $data->save();
+        return redirect('admin/menu');
 
     }
 
