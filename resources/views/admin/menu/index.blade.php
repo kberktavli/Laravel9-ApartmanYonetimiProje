@@ -5,11 +5,12 @@
     <div class="main-panel">
         <!-- partial -->
         <div class="content-wrapper">
-            <h1>Menu List</h1>
+            <a href="/admin/create" class="btn-rounded btn btn-success btn-lg" style="width: 200px" >Add Menu</a>
+
 
             <div class="card">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body"><p>
                         <h4 class="card-title">Menu List</h4>
                         </p>
                         <div class="container">
