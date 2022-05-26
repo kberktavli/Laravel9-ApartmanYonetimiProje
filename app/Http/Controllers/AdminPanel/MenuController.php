@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MenuController extends Controller
 {
@@ -56,9 +57,11 @@ class MenuController extends Controller
      * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function show(Menu $menu)
+    public function show(Menu $menu,$id)
     {
         //
+        $data= Menu::find($id);
+        return view('admin.menu.show',['data'=>$data]);
     }
 
     /**
@@ -98,8 +101,9 @@ class MenuController extends Controller
      * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Menu $menu)
+    public function destroy(Menu $menu,$id)
     {
-        //
+        DB::table('menus')->where('id', '=', $id)->delete();
+        return redirect('admin/menu');
     }
 }
