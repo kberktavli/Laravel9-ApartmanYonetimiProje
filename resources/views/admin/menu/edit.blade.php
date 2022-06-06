@@ -15,6 +15,18 @@
                             <form role="form" class="forms-sample" action="{{route('admin.menu.update',['id'=>$data->id])}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
+                                    <label>Parent Category</label>
+                                    <select class="form-control select2" name="parent_id" style="...">
+                                        <option value="0" selected="selected">Main Menu</option>
+                                        @foreach ($datalist as $rs)
+                                            <option value="{{ $rs->id }}" @if($rs->id ==$data->parent_id) selected="selected" @endif>
+                                                {{ \App\Http\Controllers\AdminPanel\MenuController::getParentsTree($rs, $rs->title) }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="exampleInputEmail1">Title</label>
                                     <input type="text" class="form-control" name="title" value="{{$data->title}}">
                                 </div>

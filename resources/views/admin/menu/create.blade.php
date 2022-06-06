@@ -12,8 +12,24 @@
                         <div class="card-body">
                             <h4 class="card-title">Basic form elements</h4>
                             <p class="card-description"> Basic form elements </p>
-                            <form role="form" class="forms-sample" action="{{ route('admin.menu.store') }}" method="POST" enctype="multipart/form-data">
+                            <form role="form" class="forms-sample" action="{{ route('admin.menu.store') }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
+                                <div class="form-group">
+                                    <label>Parent Category</label>
+                                    <select class="form-control select2" name="parent_id" style="...">
+                                        <option value="0" selected="selected">Main Menu</option>
+                                        @foreach ($data as $rs)
+                                            <option value="{{ $rs->id }}">
+                                                {{ \App\Http\Controllers\AdminPanel\MenuController::getParentsTree($rs, $rs->title) }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+
+
+
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Title</label>
                                     <input type="text" class="form-control" name="title" placeholder="Title">
@@ -38,10 +54,10 @@
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect2">Status</label>
                                     <select class="form-control" id="exampleFormControlSelect2" name="status">
-                                      <option>True</option>
-                                      <option>False</option>
+                                        <option>True</option>
+                                        <option>False</option>
                                     </select>
-                                  </div>
+                                </div>
 
                                 <button type="submit" class="btn btn-primary mr-2">Save</button>
                             </form>
@@ -57,4 +73,3 @@
         <!-- content-wrapper ends -->
 
     @endsection
-

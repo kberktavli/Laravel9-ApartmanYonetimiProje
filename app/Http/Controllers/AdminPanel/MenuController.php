@@ -11,6 +11,29 @@ use Illuminate\Support\Facades\Storage;
 
 class MenuController extends Controller
 {
+
+    protected $appends = [
+        'getParentsTree'
+    ];
+
+    public static function getParentsTree($menu,$title)
+    {
+        if ($menu->parent_id == 0)
+        {
+            if($menu->parent_id==0)
+            {
+                return $title;
+            }
+            $parent = Menu::find($menu->parent_id);
+            $title = $parent->title . '>' . $title;
+            return MenuController::getParentsTree($parent,$title);
+        }
+    }
+
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +52,9 @@ class MenuController extends Controller
      */
     public function create()
     {
-        return view('admin.menu.create');
+        $data= Menu::all();
+        return view('admin.menu.create',['data'=>$data]);
+
     }
 
     /**
@@ -42,7 +67,7 @@ class MenuController extends Controller
     {
 
         $data = new Menu;
-        $data->parent_id = 0;
+        $data->parent_id = $request->parent_id;
         $data->title = $request->title;
         $data->keywords = $request->keywords;
         $data->description = $request->description;
@@ -79,7 +104,8 @@ class MenuController extends Controller
     public function edit(Menu $menu,$id)
     {
         $data= Menu::find($id);
-        return view('admin.menu.edit',['data'=>$data]);
+        $datalist= Menu::all();
+        return view('admin.menu.edit',['data'=>$data,'datalist'=>$datalist]);
     }
 
     /**
@@ -92,7 +118,7 @@ class MenuController extends Controller
     public function update(Request $request, Menu $menu,$id)
     {
         $data= Menu::find($id);
-        $data->parent_id = 0;
+        $data->parent_id = $request->parent_id;
         $data->title = $request->title;
         $data->keywords = $request->keywords;
         $data->description = $request->description;
