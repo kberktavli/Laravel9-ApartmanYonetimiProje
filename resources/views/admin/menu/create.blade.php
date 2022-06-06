@@ -12,7 +12,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Basic form elements</h4>
                             <p class="card-description"> Basic form elements </p>
-                            <form role="form" class="forms-sample" action="{{ route('admin_menu_store') }}" method="POST">
+                            <form role="form" class="forms-sample" action="{{ route('admin.menu.store') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Title</label>

@@ -12,7 +12,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Basic form elements</h4>
                             <p class="card-description"> Basic form elements </p>
-                            <form role="form" class="forms-sample" action="/admin/menu/update/{{$data->id}}" method="POST">
+                            <form role="form" class="forms-sample" action="{{route('admin.menu.update',['id'=>$data->id])}}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Title</label>
@@ -40,7 +40,7 @@
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect2">Status</label>
                                     <select class="form-control" id="exampleFormControlSelect2" name="status">
-                                      <option selected>Selected:{{$data->status}}</option>
+                                      <option selected>{{$data->status}}</option>
                                       <option>True</option>
                                       <option>False</option>
                                     </select>

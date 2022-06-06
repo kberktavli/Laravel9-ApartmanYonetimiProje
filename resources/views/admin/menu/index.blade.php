@@ -5,7 +5,7 @@
     <div class="main-panel">
         <!-- partial -->
         <div class="content-wrapper">
-            <a href="/admin/menu/create" class="btn-rounded btn btn-success btn-lg" style="width: 200px" >Add Menu</a>
+            <a href="{{route('admin.menu.create')}}" class="btn-rounded btn btn-success btn-lg" style="width: 200px" >Add Menu</a>
 
 
             <div class="card">
@@ -38,12 +38,12 @@
                                                 <td>{{ $rs->description }}</td>
                                                 <td>{{ $rs->image }}</td>
                                                 <td>{{ $rs->status }}</td>
-                                                <td><a href="/admin/menu/edit/{{ $rs->id }}"
+                                                <td><a href="{{route('admin.menu.edit',['id'=>$rs->id])}}"
                                                         class="btn btn-warning btn-rounded btn-sm">Edit</a></td>
-                                                <td><a href="/admin/menu/destroy/{{ $rs->id }}"
+                                                <td><a href="{{route('admin.menu.destroy',['id'=>$rs->id])}}"
                                                         class="btn btn-danger btn-rounded btn-sm">Delete</a>
                                                 </td>
-                                                <td><a href="/admin/menu/show/{{ $rs->id }}"
+                                                <td><a href="{{route('admin.menu.show',['id'=>$rs->id])}}"
                                                         class="btn btn-success btn-rounded btn-sm">Show</a>
                                                 </td>
                                             </tr>
