@@ -12,7 +12,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Basic form elements</h4>
                             <p class="card-description"> Basic form elements </p>
-                            <form role="form" class="forms-sample" action="{{ route('admin.menu.store') }}" method="POST">
+                            <form role="form" class="forms-sample" action="{{ route('admin.menu.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Title</label>
@@ -32,9 +32,7 @@
                                     <div class="input-group col-xs-12">
                                         <input type="file" class="form-control file-upload-info" name="image"
                                             placeholder="Upload Image">
-                                        <span class="input-group-append">
-                                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                                        </span>
+
                                     </div>
                                 </div>
                                 <div class="form-group">

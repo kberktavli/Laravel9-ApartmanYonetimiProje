@@ -36,8 +36,12 @@
                                                 <td>{{ $rs->title }}</td>
                                                 <td>{{ $rs->keywords }}</td>
                                                 <td>{{ $rs->description }}</td>
-                                                <td>{{ $rs->image }}</td>
-                                                <td>{{ $rs->status }}</td>
+                                                <td>
+                                                    @if ($rs->image)
+                                                        <img src="{{Storage::url($rs->image)}}">
+                                                    @endif
+                                                   </td>
+                                                <td>{{ $rs->status}}</td>
                                                 <td><a href="{{route('admin.menu.edit',['id'=>$rs->id])}}"
                                                         class="btn btn-warning btn-rounded btn-sm">Edit</a></td>
                                                 <td><a href="{{route('admin.menu.destroy',['id'=>$rs->id])}}"

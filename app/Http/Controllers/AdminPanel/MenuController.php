@@ -7,6 +7,7 @@ use App\Models\Menu;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class MenuController extends Controller
 {
@@ -46,6 +47,10 @@ class MenuController extends Controller
         $data->keywords = $request->keywords;
         $data->description = $request->description;
         $data->status = $request->status;
+        if($request->file('image')){
+
+            $data->image = $request->file('image')->store('images');
+        }
         $data->save();
         return redirect('admin/menu');
 
@@ -62,6 +67,7 @@ class MenuController extends Controller
         //
         $data= Menu::find($id);
         return view('admin.menu.show',['data'=>$data]);
+
     }
 
     /**
@@ -91,6 +97,10 @@ class MenuController extends Controller
         $data->keywords = $request->keywords;
         $data->description = $request->description;
         $data->status = $request->status;
+        if($request->file('image')){
+
+            $data->image = $request->file('image')->store('images');
+        }
         $data->save();
         return redirect('admin/menu');
     }
@@ -103,7 +113,9 @@ class MenuController extends Controller
      */
     public function destroy(Menu $menu,$id)
     {
-        DB::table('menus')->where('id', '=', $id)->delete();
-        return redirect('admin/menu');
+       $data= Menu::find($id);
+       Storage::delete($data->image);
+       $data->delete();
+       return redirect('admin/menu');
     }
 }
