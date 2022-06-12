@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
 {
-    use HasFactory;
+   use HasFactory;
+    #one To Many
+    public function contents()
+    {
+        return $this->hasMany(Content::class);
+    }
 }

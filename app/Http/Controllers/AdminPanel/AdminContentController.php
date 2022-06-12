@@ -53,7 +53,6 @@ class AdminContentController extends Controller
         $data->description = $request->description;
         $data->image = $request->image;
         $data->detail = $request->detail;
-        $data->menu = $request->menu;
         $data->news = $request->news;
         $data->anounce = $request->anounce;
         $data->status = $request->status;
@@ -110,7 +109,6 @@ class AdminContentController extends Controller
         $data->description = $request->description;
         $data->image = $request->image;
         $data->detail = $request->detail;
-        $data->menu = $request->menu;
         $data->news = $request->news;
         $data->anounce = $request->anounce;
         $data->status = $request->status;

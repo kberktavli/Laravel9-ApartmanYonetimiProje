@@ -10,17 +10,17 @@
                 <div class="row mb-2">
 
                     <div class="col-sm-3">
-                        <a href="{{route('admin.content.edit',['id'=>$data->id])}}" class="btn btn-warning btn-rounded btn-sm"
-                            style="width: 100px">Edit</a>
+                        <a href="{{ route('admin.content.edit', ['id' => $data->id]) }}"
+                            class="btn btn-warning btn-rounded btn-sm" style="width: 100px">Edit</a>
                     </div>
                     <div class="col-sm-3">
-                        <a href="{{route('admin.content.destroy',['id'=>$data->id])}}"
+                        <a href="{{ route('admin.content.destroy', ['id' => $data->id]) }}"
                             onclick="return confirm('Deleting!! Are you sure ?')" class="btn btn-danger btn-rounded btn-sm"
                             style="width: 100px">Delete</a>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
                             <li class="breadcrumb-item active">Show Content</li>
                         </ol>
                     </div>
@@ -41,14 +41,27 @@
                                     <th>Id</th>
                                     <th>{{ $data->id }}</th>
                                 </tr>
-                                <tr>
-                                    <th>Menu</th>
-                                    <th>{{ $data->menu }}</th>
-                                </tr>
+
                                 <tr>
                                     <th>Title</th>
                                     <th>{{ $data->title }}</th>
                                 </tr>
+                                <tr>
+                                    <th>Tür</th>
+                                    @if ($data->menu_id == 10)
+                                        <th>Kiraci</th>
+                                    @elseif ($data->menu_id == 11)
+                                        <th>Ev Sahibi</th>
+                                    @endif
+                                </tr>
+
+
+
+
+
+
+
+
                                 <tr>
                                     <th>Description</th>
                                     <th>{{ $data->description }}</th>
@@ -70,9 +83,9 @@
                                     <th>Image</th>
                                     <td>
                                         @if ($data->image)
-                                            <img src="{{Storage::url($data->image)}}">
+                                            <img src="{{ Storage::url($data->image) }}">
                                         @endif
-                                       </td>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th>Status</th>

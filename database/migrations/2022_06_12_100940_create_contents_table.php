@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('image')->nullable();
             $table->string('detail')->nullable();
-            $table->string('menu')->nullable();
             $table->string('news')->nullable();
             $table->string('anounce')->nullable();
             $table->string('status',6)->default('False');

@@ -18,9 +18,8 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Parents Id</th>
-                                            <th style="width: 10px">Id</th>
                                             <th>Menu</th>
+                                            <th style="width: 10px">Id</th>
                                             <th>Title</th>
                                             <th>Description</th>
                                             <th>Detail</th>
@@ -38,7 +37,6 @@
                                             <tr>
                                                 <td>{{ \App\Http\Controllers\AdminPanel\MenuController::getParentsTree($rs,$rs->menu_id)}}</td>
                                                 <td>{{ $rs->id }}</td>
-                                                <td>{{ $rs->menu }}</td>
                                                 <td>{{ $rs->title }}</td>
                                                 <td>{{$rs->description}}</td>
                                                 <td>{{ $rs->detail }}</td>

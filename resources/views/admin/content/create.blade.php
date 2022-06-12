@@ -26,10 +26,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Menu</label>
-                                    <input type="text" class="form-control" name="menu" placeholder="Menu">
-                                </div>
+
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Title</label>
                                     <input type="text" class="form-control" name="title" placeholder="Title">
