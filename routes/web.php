@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPanel\AdminContentController;
 use App\Http\Controllers\AdminPanel\HomeController as AdminPanelHomeController;
 use App\Http\Controllers\AdminPanel\MenuController as AdminMenuController;
 use App\Http\Controllers\AdminPanel\MenuController;
@@ -46,6 +47,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     //*****************ADMİN MENU ROUTES */
     Route::prefix('/menu')->name('menu.')->controller(AdminMenuController::class)->group(function () {
+        Route::get('/' , 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/show/{id}', 'show')->name('show');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
+    });
+    //*****************ADMİN CONTENT ROUTES */
+    Route::prefix('/content')->name('content.')->controller(AdminContentController::class)->group(function () {
         Route::get('/' , 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
